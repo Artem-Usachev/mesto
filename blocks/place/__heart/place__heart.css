@@ -1,0 +1,16 @@
+.place__heart {
+    background-image: url(../../../images/heart.svg);
+    height: 19px;
+    width: 22px;
+    border-radius: 0px;
+    transition: 0.5s ease all;
+}
+
+.place__heart:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.place__heart:active {
+    background-image: url(../../../images/black-heart.svg);
+}

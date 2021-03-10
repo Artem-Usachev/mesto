@@ -1,0 +1,61 @@
+/* normalize */
+
+@import url(../vendor/normalize.css);
+
+/* fonts */
+
+@import url(../vendor/font-Inter.css);
+
+/* add-button */
+
+@import url(../blocks/add-button/add-button.css);
+
+/* avatar */
+
+@import url(../blocks/avatar/avatar.css);
+
+/* body */
+
+@import url(../blocks/body/body.css);
+
+/* contetn */
+
+@import url(../blocks/content/content.css);
+
+/* footer */
+
+@import url(../blocks/footer/__author/footer__author.css);
+@import url(../blocks/footer/footer.css);
+
+/* header */
+
+@import url(../blocks/header/__border/header__border.css);
+@import url(../blocks/header/__logo/header__logo.css);
+@import url(../blocks/header/header.css);
+
+/* info */
+
+@import url(../blocks/info/__bar/info__bar.css);
+@import url(../blocks/info/__pen-image/info__pen-image.css);
+@import url(../blocks/info/__setting-box/info__setting-box.css);
+@import url(../blocks/info/__subtitle/info__subtitle.css);
+@import url(../blocks/info/__title/info__title.css);
+
+/* page */
+
+@import url(../blocks/page/page.css);
+
+/* place */
+
+@import url(../blocks/place/place.css);
+@import url(../blocks/place/__box/place__box.css);
+@import url(../blocks/place/__heart/place__heart.css);
+@import url(../blocks/place/__title/place__title.css);
+
+/* places */
+
+@import url(../blocks/places/places.css);
+
+/* profile */
+
+@import url(../blocks/profile/profile.css);
