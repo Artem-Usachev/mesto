@@ -4,6 +4,9 @@
     width: 22px;
     border-radius: 0px;
     transition: 0.5s ease all;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 
 .place__heart:hover {
@@ -13,4 +16,26 @@
 
 .place__heart:active {
     background-image: url(../../../images/black-heart.svg);
+    opacity: 1;
+}
+
+@media screen and (max-width: 1279px) {
+    .place__heart {
+        width: 17.6px;
+        height: 15.2px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .place__heart {
+        width: 13.2px;
+        height: 11.4px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .place__heart {
+        width: 22px;
+        height: 19px;
+    }
 }

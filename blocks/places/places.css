@@ -1,6 +1,26 @@
-.places {
-    display: grid;
-    grid-template-columns: repeat(3, 282px);
-    column-gap: 17px;
-    row-gap: 20px;
-}
+ .places {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+     column-gap: 17px;
+     row-gap: 20px;
+ }
+ 
+ @media screen and (max-width: 1279px) {
+     .places {
+         column-gap: 13.6px;
+         row-gap: 16px;
+     }
+ }
+ 
+ @media screen and (max-width: 1023px) {
+     .places {
+         column-gap: 10px;
+         row-gap: 12px;
+     }
+ }
+ 
+ @media screen and (max-width: 426px) {
+     .places {
+         row-gap: 20px;
+     }
+ }

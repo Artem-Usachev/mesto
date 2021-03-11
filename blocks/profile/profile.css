@@ -1,6 +1,14 @@
-.profile {
-    display: flex;
-    align-items: center;
-    margin-bottom: 51px;
-    color: white;
-}
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 51px;
+            color: white;
+            justify-content: space-between;
+        }
+        
+        @media screen and (max-width: 767px) {
+            .profile {
+                flex-direction: column;
+                text-align: center;
+            }
+        }

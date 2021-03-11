@@ -6,9 +6,21 @@
 
 @import url(../vendor/font-Inter.css);
 
+/* popup */
+
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__box/_user/popup__box_user_info.css);
+@import url(../blocks/popup/__box/_user/popup__box_user_name.css);
+@import url(../blocks/popup/__text/popup__text.css);
+@import url(../blocks/popup/__button/popup__button.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__content/popup__content.css);
+@import url(../blocks/popup/__box/popup__box.css);
+
 /* add-button */
 
 @import url(../blocks/add-button/add-button.css);
+@import url(../blocks/add-button/__plus/add-button__plus.css);
 
 /* avatar */
 
@@ -40,10 +52,12 @@
 @import url(../blocks/info/__setting-box/info__setting-box.css);
 @import url(../blocks/info/__subtitle/info__subtitle.css);
 @import url(../blocks/info/__title/info__title.css);
+@import url(../blocks/info/info.css);
 
 /* page */
 
 @import url(../blocks/page/page.css);
+@import url(../blocks/page/_theme/page_theme_dark.css);
 
 /* place */
 
@@ -51,6 +65,7 @@
 @import url(../blocks/place/__box/place__box.css);
 @import url(../blocks/place/__heart/place__heart.css);
 @import url(../blocks/place/__title/place__title.css);
+@import url(../blocks/place/__illustration/place__illustration.css);
 
 /* places */
 
