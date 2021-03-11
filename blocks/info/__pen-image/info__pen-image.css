@@ -1,6 +1,7 @@
 .info__pen-image {
     width: 10px;
     height: 10px;
+    display: block;
 }
 
 @media screen and (max-width: 1279px) {

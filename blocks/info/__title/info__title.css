@@ -1,6 +1,9 @@
 .info__title {
     font-weight: 500;
     font-size: 42px;
+    word-break: break-all;
+    display: inline;
+    max-width: 294px;
     line-height: 48px;
     margin: 0;
 }
@@ -9,6 +12,7 @@
     .info__title {
         font-size: 33.6px;
         line-height: 38px;
+        max-width: 235px;
     }
 }
 
@@ -16,6 +20,7 @@
     .info__title {
         font-size: 25.2px;
         line-height: 29px;
+        max-width: 176px;
     }
 }
 
@@ -23,5 +28,6 @@
     .info__title {
         font-size: 27px;
         line-height: 33px;
+        max-width: 189px;
     }
 }
