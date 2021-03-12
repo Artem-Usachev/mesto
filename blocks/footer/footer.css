@@ -5,14 +5,12 @@
 
 @media screen and (max-width: 1279px) {
     .footer {
-        max-width: calc(100% - 2 * 19px);
         margin: 53px auto 0;
     }
 }
 
 @media screen and (max-width: 1023px) {
     .footer {
-        max-width: calc(100% - 2 * 19px);
         margin: 40px auto 0;
     }
 }

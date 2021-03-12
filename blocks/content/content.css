@@ -6,5 +6,6 @@
 @media screen and (max-width: 767px) {
     .content {
         max-width: calc(100% - 2 * 19px);
+        padding-top: 38px;
     }
 }
