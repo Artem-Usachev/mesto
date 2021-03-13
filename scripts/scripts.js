@@ -19,8 +19,8 @@ closeButton.addEventListener('click', closePopup);
 
 
 let saveButton = document.querySelector('.popup__button')
-let inputUserName = document.querySelector('.popup__userName');
-let inputUserInfo = document.querySelector('.popup__userInfo');
+let inputUserName = document.querySelector('.popup__user-name');
+let inputUserInfo = document.querySelector('.popup__user-info');
 let userName = document.querySelector('.info__title');
 let userInfo = document.querySelector('.info__subtitle');
 
