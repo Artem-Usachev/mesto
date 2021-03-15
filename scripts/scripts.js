@@ -1,34 +1,23 @@
-let openButton = document.querySelector('.info__setting-box');
-let closeButton = document.querySelector('.popup__exit-img');
 let popup = document.querySelector('.popup');
+let openButton = document.querySelector('.info__setting-box');
+let closeButton = popup.querySelector('.popup__exit-img');
 
-popup.classList.add('invisible');
 
-function addVisiblePopup() {
+function openPopup() {
     popup.classList.remove('invisible');
+    inputUserName.value = userName.innerText;
+    inputUserInfo.value = userInfo.innerText;
 }
-openButton.addEventListener('click', addVisiblePopup);
 
 function closePopup() {
     popup.classList.add('invisible');
 }
-
-closeButton.addEventListener('click', closePopup);
-
-
-
 
 let saveButton = document.querySelector('.popup__button')
 let inputUserName = document.querySelector('.popup__user-name');
 let inputUserInfo = document.querySelector('.popup__user-info');
 let userName = document.querySelector('.info__title');
 let userInfo = document.querySelector('.info__subtitle');
-
-// equalization userName inputUserName
-inputUserName.value = userName.innerText;
-
-// equalization userInfo inputUserInfo
-inputUserInfo.value = userInfo.innerText;
 
 // receiving ValueName 
 let inputValueName = '';
@@ -37,12 +26,10 @@ function infoValueHandler(e) {
     inputValueInfo = e.target.value;
 }
 
-
 //  receiving ValueInfo
 let inputValueInfo = '';
 
 function nameValueHandler(e) {
-
     inputValueName = e.target.value;
 }
 
@@ -60,11 +47,14 @@ function clickHeandlerInfo(e) {
     e.preventDefault();
     userInfo.textContent = inputValueInfo;
 
+
 }
+openButton.addEventListener('click', openPopup);
+closeButton.addEventListener('click', closePopup);
 
 
 inputUserName.addEventListener('change', (e) => nameValueHandler(e));
-saveButton.addEventListener('click', (e) => clickHeandlerName(e));
+saveButton.addEventListener('submit', (e) => clickHeandlerName(e));
 
 inputUserInfo.addEventListener('change', (e) => infoValueHandler(e));
-saveButton.addEventListener('click', (e) => clickHeandlerInfo(e));
+saveButton.addEventListener('submit', (e) => clickHeandlerInfo(e));

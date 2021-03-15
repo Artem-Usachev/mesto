@@ -11,17 +11,19 @@
 
 @media screen and (max-width: 1279px) {
     .place__title {
-        font-size: 19.2px;
+        font-size: 19px;
         line-height: 23px;
-        margin: 20px 0 25px;
+        margin-top: 20px;
+        margin-bottom: 25px;
     }
 }
 
 @media screen and (max-width: 1023px) {
     .place__title {
-        font-size: 14.4px;
+        font-size: 14px;
         line-height: 17px;
-        margin: 15px 0 18.6px;
+        margin-top: 15px;
+        margin-bottom: 19px;
     }
 }
 
@@ -29,6 +31,7 @@
     .place__title {
         font-size: 24px;
         line-height: 29px;
-        margin: 25px 0 31px;
+        margin-top: 25px;
+        margin-bottom: 31px;
     }
 }

@@ -5,19 +5,19 @@
 
 @media screen and (max-width: 1279px) {
     .footer {
-        margin: 53px auto 0;
+        margin-top: 53px;
     }
 }
 
 @media screen and (max-width: 1023px) {
     .footer {
-        margin: 40px auto 0;
+        margin-top: 40px;
     }
 }
 
 @media screen and (max-width: 767px) {
     .footer {
         max-width: calc(100% - 2 * 19px);
-        margin: 48px auto 0;
+        margin-top: 48px;
     }
 }
