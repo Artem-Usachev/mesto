@@ -4,19 +4,19 @@
 
 @media screen and (max-width: 1279px) {
     .header__logo {
-        width: 113.6px;
+        width: 114px;
     }
 }
 
 @media screen and (max-width: 1023px) {
     .header__logo {
-        width: 85.2px;
+        width: 85px;
     }
 }
 
 @media screen and (max-width: 767px) {
     .header__logo {
-        width: 103.74px;
+        width: 104px;
         margin-left: 27px;
     }
 }

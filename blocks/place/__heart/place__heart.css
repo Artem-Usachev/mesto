@@ -24,15 +24,15 @@
 
 @media screen and (max-width: 1279px) {
     .place__heart {
-        width: 17.6px;
-        height: 15.2px;
+        width: 18px;
+        height: 15px;
     }
 }
 
 @media screen and (max-width: 1023px) {
     .place__heart {
-        width: 13.2px;
-        height: 11.4px;
+        width: 13px;
+        height: 11px;
     }
 }
 

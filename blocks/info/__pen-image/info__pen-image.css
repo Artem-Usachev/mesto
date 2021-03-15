@@ -17,10 +17,3 @@
         height: 8px;
     }
 }
-
-@media screen and (max-width: 767px) {
-    .info__pen-image {
-        width: 7.5px;
-        height: 7.5px;
-    }
-}
