@@ -17,12 +17,10 @@ function closePopup() {
 }
 
 function clickHeandlerInfo(e) {
-
     e.preventDefault();
     userInfo.textContent = inputUserInfo.value;
     userName.textContent = inputUserName.value;
     closePopup();
-
 }
 
 openButton.addEventListener('click', openPopup);
