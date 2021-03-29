@@ -31,7 +31,7 @@ openButton.addEventListener('click', function() {
 closeButton.addEventListener('click', function() {
     closePopup(popup);
 });
-popup.addEventListener('submit', (e) => clickHeandlerInfo(e));
+popup.addEventListener('submit', clickHeandlerInfo);
 
 
 // work2
@@ -51,8 +51,8 @@ const initialCards = [{
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
     },
     {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+        name: 'Урал',
+        link: 'https://images.unsplash.com/photo-1503943196655-59560afb7902?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1363&q=80'
     },
     {
         name: 'Иваново',
@@ -72,15 +72,56 @@ const initialCards = [{
     }
 ];
 const places = document.querySelector('.places');
-const cards = initialCards.forEach(function(item) {
-    const card = document.querySelector('.place_template').content;
-    const conteiner = card.cloneNode(true);
-    const cardTitle = conteiner.querySelector('.place__title');
-    const cardImg = conteiner.querySelector('.place__illustration');
-    cardTitle.textContent = item.name;
-    cardImg.src = item.link;
-    places.prepend(conteiner)
-    cardImg.addEventListener('click', function() {
-        // openPopup(popupPlace);
+
+
+
+function addPlaceTemplate(title, link) {
+    const placeTemplate = document.querySelector('.place_template').content;
+    const placeElement = placeTemplate.querySelector('.place').cloneNode(true);
+
+    placeElement.querySelector('.place__title').textContent = title;
+    const imgElement = placeElement.querySelector('.place__illustration').src = link;
+
+    placeElement.querySelector('.place__heart').addEventListener('click', function(e) {
+        e.target.classList.add('place__heart_active')
     });
-})
+
+    placeElement.querySelectorAll('.place__delete').forEach((placeDeleteButton) =>
+        placeDeleteButton.addEventListener('click', function() {
+            const placeDelete = placeDeleteButton.closest('.place');
+            placeDelete.remove();
+        }));
+    places.append(placeElement);
+}
+
+function clearCards() {
+    const cards = document.querySelectorAll('.place');
+    cards.forEach((card) => card.remove());
+}
+
+function cardsRender() {
+    clearCards();
+    initialCards.forEach(function(item) {
+        addPlaceTemplate(item.name, item.link);
+    })
+}
+
+function addNewPlace(e) {
+    e.preventDefault();
+    const newPlaceTitle = document.querySelector('.popup__place-name').value;
+    const newPlaceLink = document.querySelector('.popup__place-link').value;
+    const newPlace = {
+        name: newPlaceTitle,
+        link: newPlaceLink,
+    }
+
+    initialCards.unshift(newPlace);
+    closePopup(popupPlace);
+
+    cardsRender();
+}
+
+const newPlaceForm = document.querySelector('.popup__place-form');
+newPlaceForm.addEventListener('submit', addNewPlace);
+
+cardsRender();
