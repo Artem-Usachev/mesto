@@ -71,6 +71,7 @@
 @import url(../blocks/place/__heart/place__heart.css);
 @import url(../blocks/place/__title/place__title.css);
 @import url(../blocks/place/__illustration/place__illustration.css);
+@import url(../blocks/place/__illustration/_big/place__illustration_big.css);
 
 /* places */
 

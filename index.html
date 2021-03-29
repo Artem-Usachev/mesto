@@ -53,49 +53,34 @@
             </section>
             <!-- places -->
             <section class="places">
-                <article class="place">
-                    <img class="place__illustration" src="./images/karachiaevsk.jpg" alt="фото Карачаевск">
-                    <div class="place__box">
-                        <h2 class="place__title">Карачаевск</h2>
-                        <button class="place__heart" type="button"></button>
-                    </div>
-                </article>
-                <article class="place">
-                    <img class="place__illustration" src="./images/mountain-elbrus.jpg" alt="фото Гора Эльбрус">
-                    <div class="place__box">
-                        <h2 class="place__title">Гора Эльбрус</h2>
-                        <button class="place__heart" type="button"></button>
-                    </div>
-                </article>
-                <article class="place">
-                    <img class="place__illustration" src="./images/dombai.jpg" alt="фото Домбай">
-                    <div class="place__box">
-                        <h2 class="place__title">Домбай</h2>
-                        <button class="place__heart" type="button"></button>
-                    </div>
-                </article>
-                <article class="place">
-                    <img class="place__illustration" src="./images/mountain-elbrus.jpg" alt="фото Гора Эльбрус">
-                    <div class="place__box">
-                        <h2 class="place__title">Гора Эльбрус</h2>
-                        <button class="place__heart" type="button"></button>
-                    </div>
-                </article>
-                <article class="place">
-                    <img class="place__illustration" src="./images/dombai.jpg" alt="фото Домбай ">
-                    <div class="place__box">
-                        <h2 class="place__title">Домбай</h2>
-                        <button class="place__heart" type="button"></button>
-                    </div>
-                </article>
-                <article class="place">
-                    <img class="place__illustration" src="./images/karachiaevsk.jpg" alt="фото Карачаево-Черкессия ">
-                    <div class="place__box">
-                        <h2 class="place__title">Карачаево-Черкессия</h2>
-                        <button class="place__heart" type="button"></button>
-                    </div>
-                </article>
+                <template class="place_template">
+                    <article class="place">
+                         <img class="place__illustration" alt="фото Локации">
+                         <div class="place__box">
+                            <h2 class="place__title"></h2>
+                            <button class="place__heart" type="button"></button>
+                             </div>
+                    </article>
+                </template>
             </section>
+        </div>
+        <!-- place-popup -->
+        <div class="popup invisible popup_place">
+            <div class="popup__border">
+                <button class="popup__exit popup__exit_place" type="button">
+                    <img class="popup__exit-img" src="./images/Close-Icon.svg" alt="закрыть">
+                </button>
+                <form class="popup__content">
+                    <h2 class="popup__title">Новое место</h2>
+                    <div class="popup__box_name popup__box">
+                        <input type="text" class="popup__text popup__user-name" name="place" placeholder="Название">
+                    </div>
+                    <div class="popup__box_info popup__box">
+                        <input type="text" class="popup__text popup__user-info" name="link" placeholder="Ссылка на картинку">
+                    </div>
+                    <button class="popup__button" type="submit">Создать</button>
+                </form>
+            </div>
         </div>
         <!-- footer -->
         <footer class="footer">
