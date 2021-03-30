@@ -71,26 +71,36 @@ const initialCards = [{
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+
+const photo = document.querySelector('.photo_template');
+const avatar = document.querySelector('.avatar');
+const photoExit = document.querySelector('.photo__exit');
+photoExit.addEventListener('click', function() {
+    photo.classList.add('invisible');
+})
 const places = document.querySelector('.places');
-
-
 
 function addPlaceTemplate(title, link) {
     const placeTemplate = document.querySelector('.place_template').content;
     const placeElement = placeTemplate.querySelector('.place').cloneNode(true);
 
     placeElement.querySelector('.place__title').textContent = title;
-    const imgElement = placeElement.querySelector('.place__illustration').src = link;
-
-    placeElement.querySelector('.place__heart').addEventListener('click', function(e) {
-        e.target.classList.add('place__heart_active')
-    });
-
+    placeElement.querySelector('.place__illustration').src = link;
     placeElement.querySelectorAll('.place__delete').forEach((placeDeleteButton) =>
         placeDeleteButton.addEventListener('click', function() {
             const placeDelete = placeDeleteButton.closest('.place');
             placeDelete.remove();
         }));
+    // addLike
+    placeElement.querySelector('.place__heart').addEventListener('click', function(e) {
+        e.target.classList.add('place__heart_active')
+    });
+    // openPhoto
+    placeElement.querySelector('.place__illustration').addEventListener('click', function(e) {
+        photo.classList.remove('invisible');
+        document.querySelector('.photo__illustration').src = link;
+        document.querySelector('.photo__text').textContent = title;
+    });
     places.append(placeElement);
 }
 

@@ -82,3 +82,12 @@
 /* profile */
 
 @import url(../blocks/profile/profile.css);
+
+/* photo */
+
+@import url(../blocks/photo/photo.css);
+@import url(../blocks/photo/__text/photo__text.css);
+@import url(../blocks/photo/__illustration/photo__illustration.css);
+@import url(../blocks/photo/__exit/photo__exit.css);
+@import url(../blocks/photo/__exit-img/photo__exit-img.css);
+@import url(../blocks/photo/__border/photo__border.css);

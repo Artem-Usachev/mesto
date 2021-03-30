@@ -57,7 +57,7 @@
             </section>
             <template class="place_template">
                 <article class="place">
-                    <img class="place__illustration" alt="фото Локации">
+                    <img src="/" class="place__illustration" alt="фото Локации">
                     <img src="./images/place__delete.svg" alt="удалить" class="place__delete">
                     <div class="place__box">
                         <h2 class="place__title"></h2>
@@ -65,6 +65,18 @@
                     </div>
                 </article>
             </template>
+            <!-- photo -->
+            <div class="photo_template  invisible ">
+                <figure class="photo ">
+                    <div class="photo__border">
+                        <img src="/" alt="фото локации" class="photo__illustration">
+                        <button type="button" class="photo__exit">
+                        <img src="./images/Close-Icon.svg" alt="закрыть" class="photo__exit-img">
+                    </button>
+                        <figcaption class="photo__text">Байкал</figcaption>
+                    </div>
+                </figure>
+            </div>
             <!-- place-popup -->
             <div class="popup invisible popup_place">
                 <div class="popup__border">
