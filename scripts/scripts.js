@@ -95,6 +95,7 @@ function addPlaceTemplate(title, link) {
     placeElement.querySelector('.place__heart').addEventListener('click', function(e) {
         e.target.classList.add('place__heart_active')
     });
+
     // openPhoto
     placeElement.querySelector('.place__illustration').addEventListener('click', function(e) {
         photo.classList.remove('invisible');
