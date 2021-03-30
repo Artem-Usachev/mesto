@@ -7,7 +7,6 @@ const inputUserInfo = popup.querySelector('input[name="job"]');
 const userName = document.querySelector('.info__title');
 const userInfo = document.querySelector('.info__subtitle');
 
-
 function openPopup(popupElement) {
     inputUserName.value = userName.innerText;
     inputUserInfo.value = userInfo.innerText;
@@ -24,7 +23,6 @@ function clickHeandlerInfo(e) {
     userName.textContent = inputUserName.value;
     closePopup(popup);
 }
-
 openButton.addEventListener('click', function() {
     openPopup(popup);
 });
@@ -32,8 +30,6 @@ closeButton.addEventListener('click', function() {
     closePopup(popup);
 });
 popup.addEventListener('submit', clickHeandlerInfo);
-
-
 // work2
 // open popupPlace
 const popupPlace = document.querySelector('.popup_place');
@@ -71,7 +67,6 @@ const initialCards = [{
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
-
 const photo = document.querySelector('.photo_template');
 const avatar = document.querySelector('.avatar');
 const photoExit = document.querySelector('.photo__exit');
@@ -95,7 +90,6 @@ function addPlaceTemplate(title, link) {
     placeElement.querySelector('.place__heart').addEventListener('click', function(e) {
         e.target.classList.add('place__heart_active')
     });
-
     // openPhoto
     placeElement.querySelector('.place__illustration').addEventListener('click', function(e) {
         photo.classList.remove('invisible');
@@ -125,14 +119,10 @@ function addNewPlace(e) {
         name: newPlaceTitle,
         link: newPlaceLink,
     }
-
     initialCards.unshift(newPlace);
     closePopup(popupPlace);
-
     cardsRender();
 }
-
 const newPlaceForm = document.querySelector('.popup__place-form');
 newPlaceForm.addEventListener('submit', addNewPlace);
-
 cardsRender();
