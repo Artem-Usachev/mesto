@@ -11,20 +11,16 @@
 
 <body class="body">
     <div class="page">
-        <!-- popup  -->
-        <div class="popup invisible">
+        <!-- popup profile -->
+        <div class="popup invisible popup_type_profile">
             <div class="popup__border">
                 <button class="popup__exit" type="button">
                     <img class="popup__exit-img" src="./images/Close-Icon.svg" alt="закрыть">
                 </button>
                 <form class="popup__content">
                     <h2 class="popup__title">Редактировать профиль</h2>
-                    <div class="popup__box_name popup__box">
-                        <input type="text" class="popup__text popup__user-name" name="name" placeholder="Имя">
-                    </div>
-                    <div class="popup__box_info popup__box">
-                        <input type="text" class="popup__text popup__user-info" name="job" placeholder="О себе">
-                    </div>
+                    <input type="text" class="popup__text popup__user-name" name="name" placeholder="Имя" required>
+                    <input type="text" class="popup__text popup__user-info" name="job" placeholder="О себе" required>
                     <button class="popup__button" type="submit">Сохранить</button>
                 </form>
             </div>
@@ -56,7 +52,7 @@
             </section>
             <template class="place_template">
                 <article class="place">
-                    <img src="/" class="place__illustration" alt="фото Локации">
+                    <img src="/" class="place__illustration" alt="">
                     <img src="./images/place__delete.svg" alt="удалить" class="place__delete">
                     <div class="place__box">
                         <h2 class="place__title"></h2>
@@ -64,30 +60,26 @@
                     </div>
                 </article>
             </template>
-            <!-- photo -->
-            <div class="photo invisible photo_template">
-                <figure class="photo__border">
-                    <img src="/" alt="фото локации" class="photo__illustration">
-                    <button type="button" class="photo__exit">
-                        <img src="./images/Close-Icon.svg" alt="закрыть" class="photo__exit-img">
+            <!--popup photo -->
+            <div class=" invisible popup popup_type_photo">
+                <figure class="popup__border">
+                    <img src="/" alt="" class="popup__illustration">
+                    <button type="button" class="popup__exit">
+                        <img src="./images/Close-Icon.svg" alt="закрыть" class="popup__exit-img">
                     </button>
-                    <figcaption class="photo__text"></figcaption>
+                    <figcaption class="popup__signature"></figcaption>
                 </figure>
             </div>
-            <!-- place-popup -->
-            <div class="popup invisible popup_place">
+            <!-- popup place -->
+            <div class="popup invisible popup_type_place">
                 <div class="popup__border">
                     <button class="popup__exit popup__exit_place" type="button">
                         <img class="popup__exit-img" src="./images/Close-Icon.svg" alt="закрыть">
                     </button>
                     <form class="popup__content popup__place-form">
                         <h2 class="popup__title">Новое место</h2>
-                        <div class="popup__box_name popup__box">
-                            <input type="text" class="popup__text popup__place-name" name="place" placeholder="Название" required>
-                        </div>
-                        <div class="popup__box_info popup__box">
-                            <input type="text" class="popup__text popup__place-link" name="link" placeholder="Ссылка на картинку" required>
-                        </div>
+                        <input type="text" class="popup__text popup__place-name" name="place" placeholder="Название" required>
+                        <input type="text" class="popup__text popup__place-link" name="link" placeholder="Ссылка на картинку" required>
                         <button class="popup__button popup__add-place-button" type="submit">Создать</button>
                     </form>
                 </div>
