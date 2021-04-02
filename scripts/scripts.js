@@ -33,7 +33,7 @@ openButton.addEventListener('click', function() {
 document.querySelectorAll('.popup__exit').forEach((closeButton) =>
     closeButton.addEventListener('click', function() {
         const popup = closeButton.closest('.popup');
-        popup.classList.add('invisible');
+        closePopup(popup);
     }));;
 popupProfile.addEventListener('submit', clickHeandlerInfo);
 
@@ -73,7 +73,7 @@ const initialCards = [{
 const reverseInitialCards = initialCards.reverse();
 const photoPopup = document.querySelector('.popup_type_photo');
 const places = document.querySelector('.places');
-const placeTemplate = document.querySelector('.place_template').content;
+const placeTemplate = document.querySelector('.place-template').content;
 const popupPlaceName = document.querySelector('.popup__place-name');
 const popupPlaceLink = document.querySelector('.popup__place-link');
 const popupPlaceForm = document.querySelector('.popup__place-form');
@@ -111,13 +111,14 @@ function deleteCard(item) {
 }
 
 function addLike(e) {
-    e.target.classList.add('place__heart_active');
+    e.target.classList.toggle('place__heart_active');
 
 }
 
 function openPhoto(item) {
-    document.querySelector('.popup__illustration').src = item.link;
-    document.querySelector('.popup__illustration').alt = item.name;
+    const popupPhotoImg = document.querySelector('.popup__illustration');
+    popupPhotoImg.src = item.link;
+    popupPhotoImg.alt = item.name;
     document.querySelector('.popup__signature').textContent = item.name;
     openPopup(photoPopup);
 }
