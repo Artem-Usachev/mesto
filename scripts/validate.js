@@ -48,4 +48,4 @@ function hasInvalidInput(inputList) {
     });
 }
 
-addValidateListeners(formInputes);
+addValidateListeners(formInputes)
