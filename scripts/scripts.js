@@ -152,7 +152,7 @@ function toggleButtonState(inputList, button) {
 };
 
 function createEscCloseBtn(e) {
-    if (e.keyCode === 27) {
+    if (e.key === 'Escape') {
         closePopup(popupPlace)
         closePopup(popupProfile)
         closePopup(photoPopup)
