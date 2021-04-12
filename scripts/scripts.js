@@ -1,75 +1,56 @@
 // work1
-const openButton = document.querySelector('.info__setting-box');
+const openEditProfilePopupBtn = document.querySelector('.info__setting-box');
 const popupProfile = document.querySelector('.popup_type_profile');
-const popup = document.querySelector('.popup');
+const popup = document.querySelectorAll('.popup');
 const inputUserName = popupProfile.querySelector('input[name="name"]');
 const inputUserInfo = popupProfile.querySelector('input[name="job"]');
 const userName = document.querySelector('.info__title');
 const userInfo = document.querySelector('.info__subtitle');
+const popupProfileForm = document.querySelector('.popup__profile-form');
+const popupCloseBtn = document.querySelectorAll('.popup__exit')
 
 function openPopup(popupElement) {
+
     popupElement.classList.remove('invisible');
+    addListenerEsc();
+    addListenerClickPopup()
 }
 
 function closePopup(popupElement) {
     popupElement.classList.add('invisible');
+    removeListenerEsc()
+    removeListenerClickPopup()
 }
 
-function addPopupText() {
+function fillEditProfilePopupFields() {
     inputUserName.value = userName.textContent;
     inputUserInfo.value = userInfo.textContent;
 }
 
-function clickHeandlerInfo(e) {
+function submitEditProfileForm(e) {
     e.preventDefault();
     userInfo.textContent = inputUserInfo.value;
     userName.textContent = inputUserName.value;
     closePopup(popupProfile);
+    removeButtonVisible(profileBtn);
+
 }
-openButton.addEventListener('click', function() {
-    addPopupText();
-    openPopup(popupProfile);
+openEditProfilePopupBtn.addEventListener('click', function() {
+    fillEditProfilePopupFields();
+    openPopup(popupProfile, popupProfileForm);
 });
-document.querySelectorAll('.popup__exit').forEach((closeButton) =>
+
+popupCloseBtn.forEach((closeButton) =>
     closeButton.addEventListener('click', function() {
         const popup = closeButton.closest('.popup');
         closePopup(popup);
     }));;
-popupProfile.addEventListener('submit', clickHeandlerInfo);
+popupProfile.addEventListener('submit', submitEditProfileForm);
 
 // work2
 // open popupPlace
 const popupPlace = document.querySelector('.popup_type_place');
-const openButtonPlace = document.querySelector('.add-button');
-openButtonPlace.addEventListener('click', function() {
-    openPopup(popupPlace);
-});
-// add cards massiv
-const initialCards = [{
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Урал',
-        link: 'https://images.unsplash.com/photo-1503943196655-59560afb7902?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1363&q=80'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
+const openAddCardPopupBtn = document.querySelector('.add-button');
 const reverseInitialCards = initialCards.reverse();
 const photoPopup = document.querySelector('.popup_type_photo');
 const places = document.querySelector('.places');
@@ -77,6 +58,7 @@ const placeTemplate = document.querySelector('.place-template').content;
 const popupPlaceName = document.querySelector('.popup__place-name');
 const popupPlaceLink = document.querySelector('.popup__place-link');
 const popupPlaceForm = document.querySelector('.popup__place-form');
+const popupPhotoImg = document.querySelector('.popup__illustration');
 
 function getCardElement(item) {
     const placeElement = placeTemplate.querySelector('.place').cloneNode(true);
@@ -116,7 +98,6 @@ function addLike(e) {
 }
 
 function openPhoto(item) {
-    const popupPhotoImg = document.querySelector('.popup__illustration');
     popupPhotoImg.src = item.link;
     popupPhotoImg.alt = item.name;
     document.querySelector('.popup__signature').textContent = item.name;
@@ -131,8 +112,72 @@ function addNewCard(e) {
     }
     getCardElement(item)
     closePopup(popupPlace);
+    removeButtonVisible(placeBtn);
     popupPlaceForm.reset();
 
 }
+openAddCardPopupBtn.addEventListener('click', function() {
+    popupPlaceForm.reset();
+    removeButtonVisible(placeBtn);
+    openPopup(popupPlace);
+});
 popupPlaceForm.addEventListener('submit', addNewCard);
 renderCards();
+//work3
+
+function removeButtonVisible(button) {
+    button.setAttribute('disabled', "disabled")
+    button.classList.add('popup__button_condition_disable');
+    button.classList.remove('popup__button_condition_active');
+}
+
+function addButtonVisible(button) {
+    button.removeAttribute('disabled')
+    button.classList.remove('popup__button_condition_disable');
+    button.classList.add('popup__button_condition_active');
+}
+
+function toggleButtonState(inputList, button) {
+
+    if (hasInvalidInput(inputList)) {
+        removeButtonVisible(button)
+    } else {
+        addButtonVisible(button)
+    }
+
+};
+
+function createEscCloseBtn(e) {
+    if (e.keyCode === 27) {
+        closePopup(popupPlace)
+        closePopup(popupProfile)
+        closePopup(photoPopup)
+    }
+}
+
+function addListenerEsc() {
+    document.addEventListener('keydown', e => createEscCloseBtn(e))
+}
+
+function removeListenerEsc() {
+    document.removeEventListener('keydown', e => createEscCloseBtn(e))
+}
+
+function createClickPopupClosing(e) {
+
+    if (e.target.classList.contains('popup')) {
+        closePopup(e.target);
+    }
+}
+
+function addListenerClickPopup() {
+    popup.forEach((popup) => {
+        popup.addEventListener('click', e => createClickPopupClosing(e));
+    })
+}
+
+function removeListenerClickPopup() {
+    popup.forEach((popup) => {
+        popup.removeEventListener('click', e => createClickPopupClosing(e));
+    })
+}
