@@ -37,6 +37,7 @@ function submitEditProfileForm(e) {
 }
 openEditProfilePopupBtn.addEventListener('click', function() {
     fillEditProfilePopupFields();
+    hiddenErrorInput()
     openPopup(popupProfile, popupProfileForm);
 });
 
@@ -120,10 +121,13 @@ openAddCardPopupBtn.addEventListener('click', function() {
     popupPlaceForm.reset();
     removeButtonVisible(placeBtn);
     openPopup(popupPlace);
+    hiddenErrorInput();
 });
 popupPlaceForm.addEventListener('submit', addNewCard);
+
 renderCards();
 //work3
+const errorTextInput = document.querySelectorAll('.text-error');
 
 function removeButtonVisible(button) {
     button.setAttribute('disabled', "disabled")
@@ -179,5 +183,14 @@ function addListenerClickPopup() {
 function removeListenerClickPopup() {
     popup.forEach((popup) => {
         popup.removeEventListener('click', e => createClickPopupClosing(e));
+    })
+}
+
+function hiddenErrorInput() {
+    formInputes.forEach((error) => {
+        error.classList.remove('popup__error');
+    })
+    errorTextInput.forEach((error) => {
+        error.classList.add('invisible');
     })
 }
