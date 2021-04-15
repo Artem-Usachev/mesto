@@ -79,7 +79,7 @@ function openPhoto(item) {
 function addNewCard() {
     const item = {
         name: popupPlaceInputName.value,
-        link: popupPlaceInputLink.value
+        link: popupProfileInputUserName.value
     }
     addCard(item);
     closePopup(popupPlace);
@@ -96,8 +96,8 @@ openAddCardPopupBtn.addEventListener('click', function() {
 openEditProfilePopupBtn.addEventListener('click', function() {
     fillEditProfilePopupFields();
     openPopup(popupProfile);
-    hiddenErrorInput(popupProfileInputUserName, popupProfileUserNameError);
-    hiddenErrorInput(popupProfileInputUserInfo, popupProfileUserInfoError);
+    hiddenErrorInput(inputUserName, popupProfileUserNameError);
+    hiddenErrorInput(inputUserInfo, popupProfileUserInfoError);
     disableSubmitButton(popupProfileBtnSubmit);
 });
 

@@ -36,5 +36,3 @@ const popupPlaceNameError = document.querySelector('.place-name-error');
 const popupPlaceLinkError = document.querySelector('.place-link-error');
 const popupPlaceInputName = document.querySelector('.popup__place-name');
 const popupPlaceInputLink = document.querySelector('.popup__place-link');
-const popupProfileInputUserName = document.querySelector('.popup__user-name');
-const popupProfileInputUserInfo = document.querySelector('.popup__user-info');
