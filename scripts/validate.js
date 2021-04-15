@@ -5,10 +5,9 @@ function enableValidation(validation) {
     const profileBtn = document.getElementById(validation.submitButtonSelectorProfile);
     const popupProfileInput = document.querySelector(validation.formPopupProfile);
     const popupAddPlace = document.querySelector(validation.formPopupPlace);
-    const popupBtn = document.querySelectorAll(validation.submitButtonSelector);
     const inputListProfile = Array.from(popupProfileInput.querySelectorAll(validation.inputListProfileSelector));
     const inputListPlace = Array.from(popupAddPlace.querySelectorAll(validation.inputListPlaceSelector));
-    setEventListeners(formInputes, inputListPlace, inputListProfile, placeBtn, profileBtn, forms, popupBtn);
+    setEventListeners(formInputes, inputListPlace, inputListProfile, placeBtn, profileBtn, forms);
 }
 
 function hideError(inputId) {
@@ -40,7 +39,7 @@ function validateInputValue(input) {
     showError(input.id, input.validationMessage);
 }
 
-function setEventListeners(inputes, inputListPlace, inputListProfile, placeBtn, profileBtn, forms, popupBtn) {
+function setEventListeners(inputes, inputListPlace, inputListProfile, placeBtn, profileBtn, forms) {
     inputes.forEach((input) => {
         input.addEventListener('input', (e) => {
             validateInputValue(e.currentTarget)

@@ -28,7 +28,6 @@ const mestoPopups = {
     inputListPlaceSelector: '.popup__text',
     formPopupPlace: '.popup_type_place',
     formPopupProfile: '.popup_type_profile',
-    submitButtonSelector: '.popup__button'
 }
 const popupProfileUserNameError = document.querySelector('.user-name-error');
 const popupProfileUserInfoError = document.querySelector('.user-info-error');
