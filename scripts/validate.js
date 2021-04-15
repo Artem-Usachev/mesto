@@ -1,12 +1,14 @@
 function enableValidation(validation) {
+    const forms = document.querySelectorAll(validation.formSelector);
     const formInputes = document.querySelectorAll(validation.inputSelector);
     const placeBtn = document.getElementById(validation.submitButtonSelectorPlace);
     const profileBtn = document.getElementById(validation.submitButtonSelectorProfile);
     const popupProfileInput = document.querySelector(validation.formPopupProfile);
     const popupAddPlace = document.querySelector(validation.formPopupPlace);
+    const popupBtn = document.querySelectorAll(validation.submitButtonSelector);
     const inputListProfile = Array.from(popupProfileInput.querySelectorAll(validation.inputListProfileSelector));
     const inputListPlace = Array.from(popupAddPlace.querySelectorAll(validation.inputListPlaceSelector));
-    setEventListeners(formInputes, inputListPlace, inputListProfile, placeBtn, profileBtn);
+    setEventListeners(formInputes, inputListPlace, inputListProfile, placeBtn, profileBtn, forms, popupBtn);
 }
 
 function hideError(inputId) {
@@ -38,7 +40,7 @@ function validateInputValue(input) {
     showError(input.id, input.validationMessage);
 }
 
-function setEventListeners(inputes, inputListPlace, inputListProfile, placeBtn, profileBtn) {
+function setEventListeners(inputes, inputListPlace, inputListProfile, placeBtn, profileBtn, forms, popupBtn) {
     inputes.forEach((input) => {
         input.addEventListener('input', (e) => {
             validateInputValue(e.currentTarget)
@@ -46,7 +48,10 @@ function setEventListeners(inputes, inputListPlace, inputListProfile, placeBtn, 
             toggleButtonState(inputListProfile, profileBtn)
         });
     });
-    addOpenBtnPopupsFormsEventListener(popupPlace, popupProfile, inputes, profileBtn, placeBtn);
+    forms.forEach((form) => {
+        form.addEventListener('submit', e => cancelPageReloadWhenSubmitForm(e))
+    })
+
 }
 
 function hasInvalidInput(inputList) {
@@ -54,12 +59,5 @@ function hasInvalidInput(inputList) {
         return !inputElement.validity.valid;
     });
 }
-enableValidation({
-    inputSelector: '.popup__text',
-    submitButtonSelectorPlace: 'btn-place',
-    submitButtonSelectorProfile: 'btn-profile',
-    inputListProfileSelector: '.popup__text',
-    inputListPlaceSelector: '.popup__text',
-    formPopupPlace: '.popup_type_place',
-    formPopupProfile: '.popup_type_profile',
-});
+
+enableValidation(mestoPopups);
