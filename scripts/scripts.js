@@ -78,8 +78,8 @@ function openPhoto(item) {
 
 function addNewCard() {
     const item = {
-        name: popupPlaceName.value,
-        link: popupPlaceLink.value
+        name: popupPlaceInputName.value,
+        link: popupPlaceInputLink.value
     }
     addCard(item);
     closePopup(popupPlace);
