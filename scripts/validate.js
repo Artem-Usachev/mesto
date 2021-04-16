@@ -59,4 +59,4 @@ function hasInvalidInput(inputList) {
     });
 }
 
-enableValidation(mestoPopups);
+enableValidation(validationConfig);

@@ -19,7 +19,7 @@ const popupPlaceForm = document.querySelector('.popup__place-form');
 const popupPhotoImg = document.querySelector('.popup__illustration');
 const photoSignature = document.querySelector('.popup__signature');
 const errorTextInput = document.querySelectorAll('.text-error');
-const mestoPopups = {
+const validationConfig = {
     formSelector: '.popup__content',
     inputSelector: '.popup__text',
     submitButtonSelectorPlace: 'btn-place',

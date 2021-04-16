@@ -1,6 +1,6 @@
 function openPopup(popupElement) {
     popupElement.classList.remove('invisible');
-    addListenerEsc(popupElement);
+    addListenerEsc();
     addListenerClickPopup(popupElement);
 }
 
@@ -50,7 +50,6 @@ function createCard(item) {
 }
 
 function addCard(item) {
-    createCard(item);
     const card = createCard(item);
     places.prepend(card);
 }
@@ -128,14 +127,16 @@ function toggleButtonState(inputList, button) {
     }
 };
 
-function closeByEsc(e, popup) {
+function closeByEsc(e) {
+    const popupOpen = document.querySelector(".popup:not(.invisible)")
     if (e.key === 'Escape') {
-        closePopup(popup)
+        closePopup(popupOpen)
     }
 }
 
-function addListenerEsc(popup) {
-    document.addEventListener('keydown', e => closeByEsc(e, popup))
+
+function addListenerEsc() {
+    document.addEventListener('keydown', closeByEsc)
 }
 
 function removeListenerEsc() {
@@ -149,7 +150,7 @@ function closeByOverlayClick(e) {
 }
 
 function addListenerClickPopup(popup) {
-    popup.addEventListener('click', e => closeByOverlayClick(e));
+    popup.addEventListener('click', closeByOverlayClick);
 }
 
 function removeListenerClickPopup(popup) {
