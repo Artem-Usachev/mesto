@@ -1,5 +1,5 @@
-import { Card } from './Card'
-import { FormValidator } from './FormValidator'
+import { Card } from './Card.js'
+import { FormValidator } from './FormValidator.js'
 
 const valid = new FormValidator(validationConfig);
 valid.enableValidation()
