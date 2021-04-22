@@ -1,3 +1,9 @@
+import { Card } from './Card'
+import { FormValidator } from './FormValidator'
+
+const valid = new FormValidator(validationConfig);
+valid.enableValidation()
+
 function openPopup(popupElement) {
     popupElement.classList.remove('invisible');
     addListenerEsc();
@@ -31,27 +37,10 @@ popupCloseBtn.forEach((closeButton) => {
 });
 popupProfile.addEventListener('submit', submitEditProfileForm);
 
-function createCard(item) {
-    const placeElement = placeTemplate.querySelector('.place').cloneNode(true);
-    placeElement.querySelector('.place__title').textContent = item.name;
-    const placeElementImg = placeElement.querySelector('.place__illustration');
-    placeElementImg.src = item.link
-    placeElementImg.alt = item.name
-    const placeDeleteButton = placeElement.querySelector('.place__delete');
-    placeDeleteButton.addEventListener('click', function() {
-        const cardDelete = placeDeleteButton.closest('.place');
-        deleteCard(cardDelete);
-    });
-    placeElement.querySelector('.place__heart').addEventListener('click', e => toggleLike(e));
-    placeElement.querySelector('.place__illustration').addEventListener('click', function() {
-        openPhoto(item);
-    });
-    return placeElement
-}
-
 function addCard(item) {
-    const card = createCard(item);
-    places.prepend(card);
+    const card = new Card(item.name, item.link);
+    const place = card.createCard();
+    places.prepend(place);
 }
 
 function renderCards() {
@@ -60,20 +49,7 @@ function renderCards() {
     })
 }
 
-function deleteCard(item) {
-    item.remove();
-}
 
-function toggleLike(e) {
-    e.target.classList.toggle('place__heart_active');
-}
-
-function openPhoto(item) {
-    popupPhotoImg.src = item.link;
-    popupPhotoImg.alt = item.name;
-    photoSignature.textContent = item.name;
-    openPopup(photoPopup);
-}
 
 function addNewCard() {
     const item = {
@@ -108,24 +84,7 @@ function disableSubmitButton(button) {
     button.setAttribute('disabled', 'disabled')
     button.classList.add('popup__button_condition_disable');
     button.classList.remove('popup__button_condition_active');
-
-
 }
-
-function addButtonVisibility(button) {
-    button.removeAttribute('disabled')
-    button.classList.remove('popup__button_condition_disable');
-    button.classList.add('popup__button_condition_active');
-
-}
-
-function toggleButtonState(inputList, button) {
-    if (hasInvalidInput(inputList)) {
-        disableSubmitButton(button)
-    } else {
-        addButtonVisibility(button)
-    }
-};
 
 function closeByEsc(e) {
     const popupOpen = document.querySelector(".popup:not(.invisible)")
@@ -165,8 +124,4 @@ function hiddenErrorInput(errorPopupInputBorder, errorText) {
     if (errorText.classList.contains('open')) {
         errorText.classList.add('invisible');
     }
-}
-
-function cancelPageReloadWhenSubmitForm(e) {
-    e.preventDefault();
 }
