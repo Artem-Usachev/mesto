@@ -1,8 +1,6 @@
 import { Card } from './Card.js'
 import { FormValidator } from './FormValidator.js'
 
-const valid = new FormValidator(validationConfig);
-valid.enableValidation()
 
 function openPopup(popupElement) {
     popupElement.classList.remove('invisible');
@@ -48,8 +46,6 @@ function renderCards() {
         addCard(item);
     })
 }
-
-
 
 function addNewCard() {
     const item = {
@@ -125,3 +121,10 @@ function hiddenErrorInput(errorPopupInputBorder, errorText) {
         errorText.classList.add('invisible');
     }
 }
+
+const validationInputesPopupPlace = new FormValidator(formValidationPlace);
+validationInputesPopupPlace.enableValidation();
+const validationInputesPopupProfile = new FormValidator(formValidationProfile);
+validationInputesPopupProfile.enableValidation();
+export { openPopup }
+export { disableSubmitButton }
