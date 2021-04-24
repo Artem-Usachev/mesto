@@ -1,7 +1,6 @@
 import { Card } from './Card.js'
 import { FormValidator } from './FormValidator.js'
 
-
 function openPopup(popupElement) {
     popupElement.classList.remove('invisible');
     addListenerEsc();
@@ -35,15 +34,15 @@ popupCloseBtn.forEach((closeButton) => {
 });
 popupProfile.addEventListener('submit', submitEditProfileForm);
 
-function addCard(item) {
-    const card = new Card(item.name, item.link);
-    const place = card.createCard();
+function addCard(data, template) {
+    const card = new Card(data, template);
+    const place = card.generateCard();
     places.prepend(place);
 }
 
 function renderCards() {
     reverseInitialCards.forEach(item => {
-        addCard(item);
+        addCard(item, '.place');
     })
 }
 
@@ -52,7 +51,7 @@ function addNewCard() {
         name: popupPlaceInputName.value,
         link: popupPlaceInputLink.value
     }
-    addCard(item);
+    addCard(item, '.place');
     closePopup(popupPlace);
     popupPlaceForm.reset();
 }
@@ -78,7 +77,6 @@ renderCards();
 
 function disableSubmitButton(button) {
     button.setAttribute('disabled', 'disabled')
-    button.classList.add('popup__button_condition_disable');
     button.classList.remove('popup__button_condition_active');
 }
 
@@ -122,9 +120,7 @@ function hiddenErrorInput(errorPopupInputBorder, errorText) {
     }
 }
 
-const validationInputesPopupPlace = new FormValidator(formValidationPlace);
+const validationInputesPopupPlace = new FormValidator(formValidation);
 validationInputesPopupPlace.enableValidation();
-const validationInputesPopupProfile = new FormValidator(formValidationProfile);
-validationInputesPopupProfile.enableValidation();
+
 export { openPopup }
-export { disableSubmitButton }

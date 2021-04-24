@@ -19,19 +19,18 @@ const popupPlaceForm = document.querySelector('.popup__place-form');
 const popupPhotoImg = document.querySelector('.popup__illustration');
 const photoSignature = document.querySelector('.popup__signature');
 const errorTextInput = document.querySelectorAll('.text-error');
-const formValidationPlace = {
+const formValidation = {
     formSelector: '.popup__content',
     inputSelector: '.popup__text',
-    submitButton: 'btn-place',
+    submitButtonPlace: 'btn-place',
     inputList: '.popup__text',
-    formPopup: '.popup_type_place'
-}
-const formValidationProfile = {
-    formSelector: '.popup__content',
-    inputSelector: '.popup__text',
-    submitButton: 'btn-profile',
-    inputList: '.popup__text',
-    formPopup: '.popup_type_profile'
+    formPopupPlace: '.popup_type_place',
+    submitButtonProfile: 'btn-profile',
+    formPopupProfile: '.popup_type_profile',
+    activeButtonClass: 'popup__button_condition_active',
+    errorClass: 'popup__error',
+    invisibleClass: 'invisible',
+    openClass: 'open'
 }
 const popupProfileUserNameError = document.querySelector('.user-name-error');
 const popupProfileUserInfoError = document.querySelector('.user-info-error');
