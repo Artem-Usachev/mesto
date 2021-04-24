@@ -120,7 +120,7 @@ function hiddenErrorInput(errorPopupInputBorder, errorText) {
     }
 }
 
-const validationInputesPopupPlace = new FormValidator(formValidation);
-validationInputesPopupPlace.enableValidation();
+const validationInputesPopups = new FormValidator(formValidation);
+validationInputesPopups.enableValidation();
 
 export { openPopup }
