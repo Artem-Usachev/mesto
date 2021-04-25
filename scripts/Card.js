@@ -3,8 +3,9 @@ class Card {
     constructor(data, template) {
         this._name = data.name;
         this._link = data.link;
-        this._template = template
+        this._template = template;
     }
+
     _getTemplate() {
         const cardElement = placeTemplate.querySelector(this._template).cloneNode(true);
         return cardElement;
@@ -21,19 +22,24 @@ class Card {
     _toggleLike(e) {
         e.target.classList.toggle('place__heart_active');
     }
+
     _setEventListeners() {
-        const placeDeleteButton = this._card.querySelector('.place__delete');
-        const cardDelete = placeDeleteButton.closest('.place');
-        placeDeleteButton.addEventListener('click', () => this._deleteCard(cardDelete));
-        this._card.querySelector('.place__heart').addEventListener('click', this._toggleLike);
-        this._card.querySelector('.place__illustration').addEventListener('click', () => this._openPhoto());
+        const cardDeleteButton = this._card.querySelector('.place__delete');
+        const cardDelete = cardDeleteButton.closest('.place');
+        const cardHeart = this._card.querySelector('.place__heart')
+        const cardIllustration = this._card.querySelector('.place__illustration');
+        cardDeleteButton.addEventListener('click', () => this._deleteCard(cardDelete));
+        cardHeart.addEventListener('click', this._toggleLike);
+        cardIllustration.querySelector('.place__illustration').addEventListener('click', () => this._openPhoto());
     }
     generateCard() {
         this._card = this._getTemplate();
+        const cardIllustration = this._card.querySelector('.place__illustration');
+        const cardTitle = this._card.querySelector('.place__title');
+        cardIllustration.src = this._link;
+        cardIllustration.alt = this._name;
+        cardTitle.textContent = this._name;
         this._setEventListeners();
-        this._card.querySelector('.place__illustration').src = this._link;
-        this._card.querySelector('.place__illustration').alt = this._name;
-        this._card.querySelector('.place__title').textContent = this._name;
         return this._card
     }
 }
