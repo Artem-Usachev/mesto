@@ -1,25 +1,24 @@
-const openEditProfilePopupBtn = document.querySelector('.info__setting-box');
-const popupProfile = document.querySelector('.popup_type_profile');
-const popup = document.querySelectorAll('.popup');
-const popupProfileBtnSubmit = document.querySelector('.popup__button_type_profile');
-const popupPlaceBtnSubmit = document.querySelector('.popup__button_type_place');
-const inputUserName = popupProfile.querySelector('input[name="name"]');
-const inputUserInfo = popupProfile.querySelector('input[name="job"]');
-const userName = document.querySelector('.info__title');
-const userInfo = document.querySelector('.info__subtitle');
-const popupProfileForm = document.querySelector('.popup__profile-form');
-const popupCloseBtn = document.querySelectorAll('.popup__exit')
-const popupPlace = document.querySelector('.popup_type_place');
-const openAddCardPopupBtn = document.querySelector('.add-button');
-const reverseInitialCards = initialCards.reverse();
-const photoPopup = document.querySelector('.popup_type_photo');
-const places = document.querySelector('.places');
-const placeTemplate = document.querySelector('.place-template').content;
-const popupPlaceForm = document.querySelector('.popup__place-form');
-const popupPhotoImg = document.querySelector('.popup__illustration');
-const photoSignature = document.querySelector('.popup__signature');
-const errorTextInput = document.querySelectorAll('.text-error');
-const formValidation = {
+import { initialCards } from './initial-сards.js'
+export const openEditProfilePopupBtn = document.querySelector('.info__setting-box');
+export const popupProfile = document.querySelector('.popup_type_profile');
+export const popupProfileBtnSubmit = document.querySelector('.popup__button_type_profile');
+export const popupPlaceBtnSubmit = document.querySelector('.popup__button_type_place');
+export const inputUserName = popupProfile.querySelector('input[name="name"]');
+export const inputUserInfo = popupProfile.querySelector('input[name="job"]');
+export const userName = document.querySelector('.info__title');
+export const userInfo = document.querySelector('.info__subtitle');
+export const popupCloseBtn = document.querySelectorAll('.popup__exit')
+export const popupPlace = document.querySelector('.popup_type_place');
+export const openAddCardPopupBtn = document.querySelector('.add-button');
+export const reverseInitialCards = initialCards.reverse();
+export const photoPopup = document.querySelector('.popup_type_photo');
+export const places = document.querySelector('.places');
+export const placeTemplate = document.querySelector('.place-template').content;
+export const popupPlaceForm = document.querySelector('.popup__place-form');
+export const popupPhotoImg = document.querySelector('.popup__illustration');
+export const photoSignature = document.querySelector('.popup__signature');
+export const errorTextInput = document.querySelectorAll('.text-error');
+export const formValidation = {
     formSelector: '.popup__content',
     inputSelector: '.popup__text',
     submitButtonPlace: 'btn-place',
@@ -32,9 +31,9 @@ const formValidation = {
     invisibleClass: 'invisible',
     openClass: 'open'
 }
-const popupProfileUserNameError = document.querySelector('.user-name-error');
-const popupProfileUserInfoError = document.querySelector('.user-info-error');
-const popupPlaceNameError = document.querySelector('.place-name-error');
-const popupPlaceLinkError = document.querySelector('.place-link-error');
-const popupPlaceInputName = document.querySelector('.popup__place-name');
-const popupPlaceInputLink = document.querySelector('.popup__place-link');
+export const popupProfileUserNameError = document.querySelector('.user-name-error');
+export const popupProfileUserInfoError = document.querySelector('.user-info-error');
+export const popupPlaceNameError = document.querySelector('.place-name-error');
+export const popupPlaceLinkError = document.querySelector('.place-link-error');
+export const popupPlaceInputName = document.querySelector('.popup__place-name');
+export const popupPlaceInputLink = document.querySelector('.popup__place-link');

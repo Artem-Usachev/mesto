@@ -1,3 +1,9 @@
+import {
+    placeTemplate,
+    popupPhotoImg,
+    photoSignature,
+    photoPopup
+} from './constants.js'
 import { openPopup } from './index.js'
 class Card {
     constructor(data, template) {
@@ -30,7 +36,7 @@ class Card {
         const cardIllustration = this._card.querySelector('.place__illustration');
         cardDeleteButton.addEventListener('click', () => this._deleteCard(cardDelete));
         cardHeart.addEventListener('click', this._toggleLike);
-        cardIllustration.querySelector('.place__illustration').addEventListener('click', () => this._openPhoto());
+        cardIllustration.addEventListener('click', () => this._openPhoto());
     }
     generateCard() {
         this._card = this._getTemplate();
