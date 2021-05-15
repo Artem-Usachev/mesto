@@ -1,0 +1,36 @@
+{
+    "name": "mesto",
+    "version": "1.0.0",
+    "description": "### Перед вами  фотогаллерея с возможностью добавлять и удалять элементы https://artem-usachev.github.io/mesto/ ### Используются: 1. возможности css и html 2. переменные,массивы,методы, слушатели событий и функции js",
+    "main": "./src/index.js",
+    "scripts": {
+        "build": "webpack --mode production",
+        "dev": "webpack serve"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Artem-Usachev/mesto.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Artem-Usachev/mesto/issues"
+    },
+    "homepage": "https://github.com/Artem-Usachev/mesto#readme",
+    "devDependencies": {
+        "@babel/core": "^7.14.0",
+        "@babel/preset-env": "^7.14.1",
+        "babel-loader": "^8.2.2",
+        "clean-webpack-plugin": "^4.0.0-alpha.0",
+        "css-loader": "^5.2.4",
+        "html-webpack-plugin": "^5.3.1",
+        "mini-css-extract-plugin": "^1.6.0",
+        "webpack": "^5.36.2",
+        "webpack-cli": "^4.6.0",
+        "webpack-dev-server": "^3.11.2"
+    },
+    "dependencies": {
+        "core-js": "^3.12.0"
+    }
+}
