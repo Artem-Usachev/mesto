@@ -1,4 +1,3 @@
-import { popupCloseBtn } from '../scripts/constants.js'
 export class Popup {
     constructor(popup) {
         this.popup = popup;
