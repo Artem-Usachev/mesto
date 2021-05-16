@@ -7,7 +7,7 @@ export const inputUserName = popupProfile.querySelector('input[name="name"]');
 export const inputUserInfo = popupProfile.querySelector('input[name="job"]');
 export const userName = document.querySelector('.info__title');
 export const userInfo = document.querySelector('.info__subtitle');
-export const popupCloseBtn = document.querySelectorAll('.popup__exit')
+export const popupCloseBtn = document.querySelector('.popup__exit')
 export const popupPlace = document.querySelector('.popup_type_place');
 export const openAddCardPopupBtn = document.querySelector('.add-button');
 export const reverseInitialCards = initialCards.reverse();
@@ -18,14 +18,23 @@ export const popupPlaceForm = document.querySelector('.popup__place-form');
 export const popupPhotoImg = document.querySelector('.popup__illustration');
 export const photoSignature = document.querySelector('.popup__signature');
 export const errorTextInput = document.querySelectorAll('.text-error');
-export const formValidation = {
+export const formValidationPopupProfile = {
     formSelector: '.popup__content',
     inputSelector: '.popup__text',
-    submitButtonPlace: 'btn-place',
     inputList: '.popup__text',
-    formPopupPlace: '.popup_type_place',
-    submitButtonProfile: 'btn-profile',
-    formPopupProfile: '.popup_type_profile',
+    submitButton: 'btn-profile',
+    formPopup: '.popup_type_profile',
+    activeButtonClass: 'popup__button_condition_active',
+    errorClass: 'popup__error',
+    invisibleClass: 'invisible',
+    openClass: 'open'
+}
+export const formValidationPopupPlace = {
+    formSelector: '.popup__content',
+    inputSelector: '.popup__text',
+    submitButton: 'btn-place',
+    inputList: '.popup__text',
+    formPopup: '.popup_type_place',
     activeButtonClass: 'popup__button_condition_active',
     errorClass: 'popup__error',
     invisibleClass: 'invisible',

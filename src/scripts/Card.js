@@ -1,22 +1,20 @@
-import {
-    placeTemplate
-} from './constants.js'
-
 class Card {
     constructor(data, template, openPhotoFunction) {
         this._name = data.name;
         this._link = data.link;
         this._template = template;
         this.openPhotoFunction = openPhotoFunction;
+        this.placeTemplate = document.querySelector('.place-template').content;
     }
 
     _getTemplate() {
-        const cardElement = placeTemplate.querySelector(this._template).cloneNode(true);
+        const cardElement = this.placeTemplate.querySelector(this._template).cloneNode(true);
         return cardElement;
     }
 
-    _deleteCard(item) {
-        item.remove();
+    _deleteCard() {
+        this._card.remove();
+        this._card = null
     }
     _toggleLike(e) {
         e.target.classList.toggle('place__heart_active');
@@ -28,7 +26,7 @@ class Card {
         const cardHeart = this._card.querySelector('.place__heart')
         const cardIllustration = this._card.querySelector('.place__illustration');
         cardIllustration.addEventListener('click', this.openPhotoFunction);
-        cardDeleteButton.addEventListener('click', () => this._deleteCard(cardDelete));
+        cardDeleteButton.addEventListener('click', () => { this._deleteCard() });
         cardHeart.addEventListener('click', this._toggleLike);
 
     }

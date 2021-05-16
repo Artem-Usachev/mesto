@@ -14,7 +14,7 @@
         <div class="popup invisible popup_type_profile">
             <div class="popup__border">
                 <button class="popup__exit" type="button">
-                    <img class="popup__exit-img" src="<%=require('../images/Close-Icon.svg')%>" alt="закрыть">
+                    <img class="popup__exit-img" src="<%=require('./images/Close-Icon.svg')%>" alt="закрыть">
                 </button>
                 <form class="popup__content popup__profile-form">
                     <h2 class="popup__title">Редактировать профиль</h2>
@@ -28,24 +28,24 @@
         </div>
         <!-- header -->
         <header class="header ">
-            <img class="header__logo " src="<%=require('../images/logo.svg')%>" alt="лого ">
+            <img class="header__logo " src="<%=require('./images/logo.svg')%>" alt="лого ">
         </header>
         <!-- content -->
         <div class="content ">
             <!-- profile -->
             <section class="profile ">
-                <img class="avatar " src="<%=require('../images/avatar.png')%> " alt="Жак-Ив Кусто ">
+                <img class="avatar " src="<%=require('./images/avatar.png')%> " alt="Жак-Ив Кусто ">
                 <div class="info ">
                     <div class="info__bar ">
                         <h1 class="info__title ">Жак-Ив Кусто</h1>
                         <div class="info__setting-box ">
-                            <img class="info__pen-image " src="<%=require('../images/pen.svg')%> " alt="редактировать ">
+                            <img class="info__pen-image " src="<%=require('./images/pen.svg')%> " alt="редактировать ">
                         </div>
                     </div>
                     <p class="info__subtitle ">Исследователь океана</p>
                 </div>
                 <button class="add-button " type="button ">
-                    <img class="add-button__plus " src="<%=require('../images/plus.svg')%> " alt="добавить ">
+                    <img class="add-button__plus " src="<%=require('./images/plus.svg')%> " alt="добавить ">
                 </button>
             </section>
             <!-- places -->
@@ -54,7 +54,7 @@
             <template class="place-template ">
                 <article class="place">
                     <img src="/ " class="place__illustration " alt="/ ">
-                    <img src="<%=require('../images/place__delete.svg')%>" alt="удалить " class="place__delete ">
+                    <img src="<%=require('./images/place__delete.svg')%>" alt="удалить " class="place__delete ">
                     <div class="place__box ">
                         <h2 class="place__title "></h2>
                         <button class="place__heart " type="button "></button>
@@ -65,8 +65,8 @@
             <div class="invisible popup popup_type_photo">
                 <figure class="popup__border">
                     <img src="./" alt="/" class="popup__illustration">
-                    <button type="button " class="popup__exit ">
-                        <img src="<%=require('../images/Close-Icon.svg')%> " alt="закрыть " class="popup__exit-img ">
+                    <button type="button " class="popup__exit">
+                        <img src="<%=require('./images/Close-Icon.svg')%> " alt="закрыть " class="popup__exit-img ">
                     </button>
                     <figcaption class="popup__signature "></figcaption>
                 </figure>
@@ -75,7 +75,7 @@
             <div class="popup invisible popup_type_place ">
                 <div class="popup__border ">
                     <button class="popup__exit popup__exit_place " type="button ">
-                        <img class="popup__exit-img " src="<%=require('../images/Close-Icon.svg')%> " alt="закрыть ">
+                        <img class="popup__exit-img " src="<%=require('./images/Close-Icon.svg')%> " alt="закрыть ">
                     </button>
                     <form class="popup__content popup__place-form " novalidate>
                         <h2 class="popup__title ">Новое место</h2>

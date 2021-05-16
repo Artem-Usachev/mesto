@@ -2,7 +2,7 @@
     "name": "mesto",
     "version": "1.0.0",
     "description": "### Перед вами  фотогаллерея с возможностью добавлять и удалять элементы https://artem-usachev.github.io/mesto/ ### Используются: 1. возможности css и html 2. переменные,массивы,методы, слушатели событий и функции js",
-    "main": "./src/index.js",
+    "main": "./src/pages/index.js",
     "scripts": {
         "build": "webpack --mode production",
         "dev": "webpack serve"

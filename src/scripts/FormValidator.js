@@ -5,13 +5,10 @@ class FormValidator {
     enableValidation() {
         this.forms = document.querySelectorAll(this.validation.formSelector);
         this.formInputes = document.querySelectorAll(this.validation.inputSelector);
-        this.submitButtonPlace = document.getElementById(this.validation.submitButtonPlace);
-        this.submitButtonProfile = document.getElementById(this.validation.submitButtonProfile);
-        this.formPopupPlace = document.querySelector(this.validation.formPopupPlace);
-        this.formPopupProfile = document.querySelector(this.validation.formPopupProfile);
-        this.inputListPlace = Array.from(this.formPopupPlace.querySelectorAll(this.validation.inputList));
-        this.inputListProfile = Array.from(this.formPopupProfile.querySelectorAll(this.validation.inputList));
-        this._setEventListeners(this.formInputes, this.inputListPlace, this.inputListProfile, this.submitButtonPlace, this.submitButtonProfile);
+        this.submitButton = document.getElementById(this.validation.submitButton);
+        this.formPopup = document.querySelector(this.validation.formPopup);
+        this.inputList = Array.from(this.formPopup.querySelectorAll(this.validation.inputList));
+        this._setEventListeners(this.formInputes, this.inputList, this.submitButton);
     }
 
     _hideError(inputId) {
@@ -43,12 +40,12 @@ class FormValidator {
     _cancelPageReloadWhenSubmitForm(e) {
         e.preventDefault();
     }
-    _setEventListeners(formInputes, inputListPlace, inputListProfile, submitButtonPlace, submitButtonProfile) {
+    _setEventListeners(formInputes, inputList, submitButton) {
         formInputes.forEach((input) => {
             input.addEventListener('input', (e) => {
                 this._validateInputValue(e.currentTarget)
-                this._toggleButtonState(inputListPlace, submitButtonPlace)
-                this._toggleButtonState(inputListProfile, submitButtonProfile)
+                this._toggleButtonState(inputList, submitButton)
+
 
             });
         });
