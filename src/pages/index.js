@@ -1,9 +1,9 @@
-import { FormValidator } from '../scripts/FormValidator.js'
-import { Card } from '../scripts/Card.js'
-import { PopupWithForm } from '../scripts/PopupWithForm';
-import { UserInfo } from '../scripts/UserInfo';
-import { Section } from '../scripts/Section';
-import { PopupWithImage } from '../scripts/PopupWithImage';
+import { FormValidator } from '../components/FormValidator.js'
+import { Card } from '../components/Card.js'
+import { PopupWithForm } from '../components/PopupWithForm';
+import { UserInfo } from '../components/UserInfo';
+import { Section } from '../components/Section';
+import { PopupWithImage } from '../components/PopupWithImage';
 import {
     openEditProfilePopupBtn,
     inputUserName,
@@ -18,7 +18,7 @@ import {
     formValidationPopupPlace,
     formValidationPopupProfile
 
-} from '../scripts/constants.js'
+} from '../components/constants.js'
 import '../pages/index.css';
 
 const section = new Section({ items: reverseInitialCards, renderer: addNewCard }, '.places')
