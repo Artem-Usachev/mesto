@@ -6,18 +6,10 @@ import { Section } from '../scripts/Section';
 import { PopupWithImage } from '../scripts/PopupWithImage';
 import {
     openEditProfilePopupBtn,
-    popupProfileBtnSubmit,
-    popupPlaceBtnSubmit,
     inputUserName,
     inputUserInfo,
     openAddCardPopupBtn,
     reverseInitialCards,
-    popupProfileUserNameError,
-    popupProfileUserInfoError,
-    popupPlaceNameError,
-    popupPlaceLinkError,
-    popupPlaceInputName,
-    popupPlaceInputLink,
     popupPhotoImg,
     photoSignature,
     popupProfile,
@@ -29,28 +21,22 @@ import {
 } from '../scripts/constants.js'
 import '../pages/index.css';
 
-const section = new Section({ items: reverseInitialCards, renderer: createCardElement }, '.places')
+const section = new Section({ items: reverseInitialCards, renderer: addNewCard }, '.places')
 const userInfoInstance = new UserInfo('.info__title', '.info__subtitle');
 const validationInputesPopupPlace = new FormValidator(formValidationPopupPlace);
 const validationInputesPopupProfile = new FormValidator(formValidationPopupProfile)
 const popupWithImage = new PopupWithImage(photoPopup, popupPhotoImg, photoSignature);
 const popupProfileForm = new PopupWithForm(popupProfile, submitEditProfileForm);
-const popupPlaceForm = new PopupWithForm(popupPlace, submitCardForm);
+const popupPlaceForm = new PopupWithForm(popupPlace, addNewCard);
 
 function handleCardClick(data) {
     popupWithImage.open(data);
 }
 
-function createCardElement(data, template) {
-    const card = new Card(data, template, () => handleCardClick(data));
+function addNewCard(data) {
+    const card = new Card(data, '.place', () => handleCardClick(data));
     const cardElement = card.generateCard();
     section.addItem(cardElement);
-}
-
-function submitCardForm({ place, link }) {
-    const card = new Card({ name: place, link }, '.place', () => handleCardClick({ name: place, link }));
-    const element = card.generateCard();
-    section.addItem(element);
 }
 
 function submitEditProfileForm({ name, job }) {
@@ -63,33 +49,17 @@ function fillEditProfilePopupFields() {
     inputUserInfo.value = info;
 }
 
-function disableSubmitButton(button) {
-    button.setAttribute('disabled', 'disabled')
-    button.classList.remove('popup__button_condition_active');
-}
-
-function hiddenErrorInput(errorPopupInputBorder, errorText) {
-    if (errorPopupInputBorder.classList.contains('open')) {
-        errorPopupInputBorder.classList.remove('popup__error');
-    }
-
-    if (errorText.classList.contains('open')) {
-        errorText.classList.add('invisible');
-    }
-}
 openEditProfilePopupBtn.addEventListener('click', function() {
     fillEditProfilePopupFields();
     popupProfileForm.open();
-    hiddenErrorInput(inputUserName, popupProfileUserNameError);
-    hiddenErrorInput(inputUserInfo, popupProfileUserInfoError);
-    disableSubmitButton(popupProfileBtnSubmit);
+    validationInputesPopupProfile.resetErrors();
+
 });
 
 openAddCardPopupBtn.addEventListener('click', function() {
-    popupPlaceForm.open()
-    hiddenErrorInput(popupPlaceInputName, popupPlaceNameError);
-    hiddenErrorInput(popupPlaceInputLink, popupPlaceLinkError);
-    disableSubmitButton(popupPlaceBtnSubmit);
+    popupPlaceForm.open();
+    validationInputesPopupPlace.resetErrors();
+
 });
 popupWithImage.setEventListeners()
 popupProfileForm.setEventListeners()
