@@ -202,5 +202,6 @@ openAddCardPopupBtn.addEventListener('click', function() {
 });
 
 avatarBtn.addEventListener('click', () => {
-    popupAvatarForm.open()
+    popupAvatarForm.open();
+    validationInputesPopupAvatar.resetErrors()
 })

@@ -28,6 +28,7 @@ export class PopupWithForm extends Popup {
     openConfirmation(data) {
         super.open();
         this.data = data
+        this.submitButton.textContent = this.submitButton.value
     }
     renderLoading(loading) {
         if (loading) {

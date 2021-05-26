@@ -1,10 +1,10 @@
 .avatar-box__backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     position: absolute;
+    border-radius: 50%;
     width: 120px;
     height: 120px;
     top: 0;
-    z-index: 30;
     left: 0;
     margin: 0 auto;
     z-index: 2;

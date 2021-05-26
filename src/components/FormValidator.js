@@ -23,6 +23,7 @@ class FormValidator {
     }
     _disableSubmitBtn(btn) {
         btn.setAttribute('disabled', 'disabled')
+        btn.textContent = btn.value
         btn.classList.remove(this.validation.activeButtonClass);
     }
     _hideError(inputId) {
