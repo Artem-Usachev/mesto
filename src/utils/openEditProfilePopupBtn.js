@@ -1,0 +1,1 @@
+export const openEditProfilePopupBtn = document.querySelector('.info__setting-box');

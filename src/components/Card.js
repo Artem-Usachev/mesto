@@ -1,12 +1,12 @@
 class Card {
-    constructor({ data, template, openPhotoFunction, openPopupConfirmation, handleLike, userId, }) {
+    constructor({ data, template, openPhoto, openPopupConfirmation, handleLike, userId, }) {
         this._name = data.name;
         this._link = data.link;
         this._userId = userId
         this._id = data._id
         this._template = template;
         this._userLike = data.likes.find(like => like._id === this._userId)
-        this._openPhotoFunction = openPhotoFunction;
+        this._openPhotoFunction = openPhoto;
         this._comparisonID = data.owner._id === userId;
         this._openPopupConfirmation = openPopupConfirmation
         this._placeTemplate = document.querySelector('.place-template').content;
@@ -21,23 +21,13 @@ class Card {
         return cardElement;
     }
 
-
-    _getOpenPopupFunctoin() {
-        this._openPopupConfirmation(this)
-    }
-
-
     _setEventListeners() {
         const cardDeleteButton = this._card.querySelector('.place__delete');
         const cardIllustration = this._card.querySelector('.place__illustration');
         cardIllustration.addEventListener('click', this._openPhotoFunction);
-        cardDeleteButton.addEventListener('click', this._getOpenPopupFunctoin.bind(this));
+        cardDeleteButton.addEventListener('click', () => this._openPopupConfirmation(this));
         this.cardHeart.addEventListener('click', this._clickLikes.bind(this))
-        if (this._userLike) {
-            this.cardHeart.classList.add('place__heart_active')
-        } else {
-            this.cardHeart.classList.remove('place__heart_active')
-        }
+
 
     }
     _clickLikes() {
@@ -70,6 +60,11 @@ class Card {
         const cardTitle = this._card.querySelector('.place__title');
         if (this._comparisonID) {
             cardDeleteButton.removeAttribute('disabled')
+        }
+        if (this._userLike) {
+            this.cardHeart.classList.add('place__heart_active')
+        } else {
+            this.cardHeart.classList.remove('place__heart_active')
         }
         cardIllustration.src = this._link;
         cardIllustration.alt = this._name;

@@ -1,18 +1,11 @@
 export class Section {
-    constructor({ items, renderer }, containerSelector) {
+    constructor({ items, renderer, containerSelector }) {
         this.items = items;
         this.renderer = renderer;
-        this.containerElement = document.querySelector(containerSelector);
-    }
-    setItems(items) {
-        this.items = items
-    }
-    removeCard() {
-        this.containerElement.remove();
-        this.containerElement = null;
+        this.containerElement = containerSelector;
     }
     render() {
-        this.items.forEach((element) => this.renderer({ name: element.name, link: element.link, likes: element.likes, _id: element._id, owner: element.owner }, '.place'));
+        this.items.forEach((element) => this.renderer(element, '.place'));
     }
     addItem(element) {
         this.containerElement.prepend(element);

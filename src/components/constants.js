@@ -1,4 +1,3 @@
-export const openEditProfilePopupBtn = document.querySelector('.info__setting-box');
 export const popupProfile = document.querySelector('.popup_type_profile');
 export const inputUserName = popupProfile.querySelector('input[name="name"]');
 export const inputUserInfo = popupProfile.querySelector('input[name="about"]');
@@ -14,6 +13,7 @@ export const popupPlaceSubmitForm = document.querySelector('.popup__place-form')
 export const popupProfileSubmitForm = document.querySelector('.popup__profile-form')
 export const popupAvatarSubmitForm = document.querySelector('.popup__avatar-form')
 export const popupConfirmationSubmitForm = document.querySelector('.popup__confirmation-form')
+export const cardsContainer = document.querySelector('.places')
 export const formValidationPopupAvatar = {
     formSelector: '.popup__content',
     inputSelector: '.popup__text',

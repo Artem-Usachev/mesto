@@ -13,12 +13,12 @@ export class UserInfo {
         };
     }
     setUserAvatar(link) {
-        this.avatarElement.src = link;
+        if (link) this.avatarElement.src = link;
     }
 
     setUserInfo({ name, info, id }) {
-        this.nameElement.textContent = name;
-        this.infoElement.textContent = info;
-        this.id = id
+        if (name) this.nameElement.textContent = name;
+        if (info) this.infoElement.textContent = info;
+        if (id) this.id = id
     }
 }

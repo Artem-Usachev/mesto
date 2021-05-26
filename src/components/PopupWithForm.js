@@ -1,10 +1,10 @@
 import { Popup } from "./Popup";
 
 export class PopupWithForm extends Popup {
-    constructor({ popup, submitForm, submit }) {
+    constructor({ popup, submit }) {
         super(popup);
         this.submit = submit;
-        this.submitForm = submitForm
+        this.submitForm = this.popup.querySelector('.popup__content')
         this.submitButton = this.submitForm.querySelector('.popup__button')
 
     }
@@ -25,11 +25,7 @@ export class PopupWithForm extends Popup {
         const values = this._getInputValues();
         this.submit(values);
     }
-    openConfirmation(data) {
-        super.open();
-        this.data = data
-        this.submitButton.textContent = this.submitButton.value
-    }
+
     renderLoading(loading) {
         if (loading) {
             this.submitButton.textContent = 'Сохранение...';
@@ -37,14 +33,7 @@ export class PopupWithForm extends Popup {
             this.submitButton.textContent = 'Сохранено!';
         }
     };
-    setEventListenersConfirmation() {
-        super.setEventListeners();
-        this.submitForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            this.submit(this.data);
-        });
 
-    }
     setEventListeners() {
         super.setEventListeners();
         this.submitForm.addEventListener('submit', (e) => {

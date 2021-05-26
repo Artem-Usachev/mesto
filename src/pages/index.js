@@ -5,15 +5,11 @@ import { UserInfo } from '../components/UserInfo';
 import { Section } from '../components/Section';
 import { PopupWithImage } from '../components/PopupWithImage';
 import {
-    popupConfirmationSubmitForm,
-    popupPlaceSubmitForm,
-    popupProfileSubmitForm,
-    popupAvatarSubmitForm,
+    cardsContainer,
     confirmationPopup,
     formValidationPopupAvatar,
     avatarPopup,
     avatarBtn,
-    openEditProfilePopupBtn,
     inputUserName,
     inputUserInfo,
     openAddCardPopupBtn,
@@ -27,6 +23,8 @@ import {
 } from '../components/constants.js'
 import '../pages/index.css';
 import { Api } from '../components/Api.js'
+import { PopupConfirmation } from '../components/PopupConfirmation.js';
+import { openEditProfilePopupBtn } from '../utils/openEditProfilePopupBtn'
 const userInfoInstance = new UserInfo('.info__title', '.info__subtitle', '.avatar-box__avatar');
 const validationInputesPopupPlace = new FormValidator(formValidationPopupPlace);
 const validationInputesPopupProfile = new FormValidator(formValidationPopupProfile);
@@ -39,17 +37,20 @@ const api = new Api({
         "Content-Type": 'application/json',
     },
 });
-const section = new Section({
+
+function createSection(items) {
+    const section = new Section({
+        items: items,
         renderer: (data) => {
             const card = addNewCard(data);
             section.addItem(card.generateCard());
         },
-    },
-    '.places'
-);
-const popupConfirmationForm = new PopupWithForm({
+        containerSelector: cardsContainer
+    });
+    return section
+}
+const popupConfirmationForm = new PopupConfirmation({
     popup: confirmationPopup,
-    submitForm: popupConfirmationSubmitForm,
     submit: (data) => {
         popupConfirmationForm.renderLoading(true)
         api
@@ -65,7 +66,6 @@ const popupConfirmationForm = new PopupWithForm({
 })
 const popupProfileForm = new PopupWithForm({
     popup: popupProfile,
-    submitForm: popupProfileSubmitForm,
     submit: (data) => {
         popupProfileForm.renderLoading(true)
         api
@@ -86,13 +86,13 @@ const popupProfileForm = new PopupWithForm({
 });
 const popupPlaceForm = new PopupWithForm({
     popup: popupPlace,
-    submitForm: popupPlaceSubmitForm,
     submit: (data) => {
         popupPlaceForm.renderLoading(true)
         api
             .submitCard(data.name, data.link)
             .then((res) => {
                 const card = addNewCard(res)
+                const section = createSection(card)
                 section.addItem(card.generateCard());
             })
             .then(() => {
@@ -104,7 +104,6 @@ const popupPlaceForm = new PopupWithForm({
 });
 const popupAvatarForm = new PopupWithForm({
     popup: avatarPopup,
-    submitForm: popupAvatarSubmitForm,
     submit: (data) => {
         popupAvatarForm.renderLoading(true)
         api.setUserAvatar(data.link)
@@ -124,7 +123,7 @@ function handleCardClick(data) {
 }
 
 function handleDeleteBtnClick(data) {
-    popupConfirmationForm.openConfirmation(data)
+    popupConfirmationForm.open(data)
 }
 
 function fillEditProfilePopupFields() {
@@ -158,7 +157,7 @@ function addNewCard(data) {
     return new Card({
         data: data,
         template: '.place',
-        openPhotoFunction: () => handleCardClick(data),
+        openPhoto: () => handleCardClick(data),
         openPopupConfirmation: handleDeleteBtnClick,
         handleLike: toggleLike,
         userId: userId,
@@ -172,15 +171,17 @@ api.getUserInfo().then(res => {
         id: res._id
     })
     userInfoInstance.setUserAvatar(res.avatar)
+}).then(() => {
+    api.getInitialCards().then((res) => {
+        const cards = res.reverse()
+        const section = createSection(cards)
+        section.render()
+    })
 }).catch((err) => console.error(err))
 
-api.getInitialCards().then((res) => {
-    const cards = res.reverse()
-    section.setItems(cards)
-    section.render()
-}).catch((err) => console.error(err))
 
-popupConfirmationForm.setEventListenersConfirmation()
+
+popupConfirmationForm.setEventListeners()
 popupWithImage.setEventListeners()
 popupProfileForm.setEventListeners()
 popupPlaceForm.setEventListeners();
