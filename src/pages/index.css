@@ -16,7 +16,10 @@
 @import url(../blocks/invisible/invisible.css);
 @import url(../blocks/add-button/add-button.css);
 @import url(../blocks/add-button/__plus/add-button__plus.css);
-@import url(../blocks/avatar/avatar.css);
+@import url(../blocks/avatar-box/__avatar/avatar-box__avatar.css);
+@import url(../blocks/avatar-box/__setting-avatar/avatar-box__setting-avatar.css);
+@import url(../blocks/avatar-box/avatar-box.css);
+@import url(../blocks/avatar-box/__backdrop/avatar-box__backdrop.css);
 @import url(../blocks/body/body.css);
 @import url(../blocks/content/content.css);
 @import url(../blocks/footer/__author/footer__author.css);
@@ -41,3 +44,4 @@
 @import url(../blocks/places/places.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/text-error/text-error.css);
+@import url(../blocks/place/__heart-signature/place__heart-signature.css);

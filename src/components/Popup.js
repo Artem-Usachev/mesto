@@ -7,15 +7,21 @@ export class Popup {
     }
     open() {
         this.popup.classList.remove('invisible');
-        this.popup.addEventListener('click', this._handleClickClose)
+        this.popup.addEventListener('mousedown', this._handleClickClose)
         document.addEventListener('keydown', this._handleEscClose)
     }
     close() {
         this.popup.classList.add('invisible');
-        this.popup.removeEventListener('click', this._handleClickClose)
+        this.popup.removeEventListener('mousedown', this._handleClickClose)
         document.removeEventListener('keydown', this._handleEscClose)
     }
-
+    setLoading(loading) {
+        if (loading) {
+            this._submitBtn.textContent = "Сохранение...";
+        } else {
+            this._submitBtn.textContent = '';
+        }
+    };
     _handleEscClose(e) {
         if (e.key === 'Escape') {
             this.close();

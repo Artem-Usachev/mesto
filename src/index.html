@@ -10,22 +10,6 @@
 
 <body class="body">
     <div class="page">
-        <!-- popup profile -->
-        <div class="popup invisible popup_type_profile">
-            <div class="popup__border">
-                <button class="popup__exit" type="button">
-                    <img class="popup__exit-img" src="<%=require('./images/Close-Icon.svg')%>" alt="закрыть">
-                </button>
-                <form class="popup__content popup__profile-form">
-                    <h2 class="popup__title">Редактировать профиль</h2>
-                    <input type="text" id="user-name" class="popup__text popup__user-name" name="name" placeholder="Имя" required minlength="2" maxlength="40">
-                    <p class="user-name-error text-error invisible"></p>
-                    <input type="text" id='user-info' class="popup__text popup__user-info" name="job" placeholder="О себе" required minlength="2" maxlength="200">
-                    <p class="user-info-error text-error invisible"></p>
-                    <button class="popup__button  popup__button_type_profile" type="submit " disabled id="btn-profile">Сохранить</button>
-                </form>
-            </div>
-        </div>
         <!-- header -->
         <header class="header ">
             <img class="header__logo " src="<%=require('./images/logo.svg')%>" alt="лого ">
@@ -34,15 +18,19 @@
         <div class="content ">
             <!-- profile -->
             <section class="profile ">
-                <img class="avatar " src="<%=require('./images/avatar.png')%> " alt="Жак-Ив Кусто ">
+                <button type="button" class="avatar-box">
+                    <img class="avatar-box__avatar" src="/" alt="фото профиля">
+                    <img class="avatar-box__setting-avatar" src="<%=require('./images/setting-avatar.svg')%>" alt="зфгрузить аватар">
+                    <div class="avatar-box__backdrop"></div>
+                </button>
                 <div class="info ">
                     <div class="info__bar ">
-                        <h1 class="info__title ">Жак-Ив Кусто</h1>
+                        <h1 class="info__title "></h1>
                         <div class="info__setting-box ">
                             <img class="info__pen-image " src="<%=require('./images/pen.svg')%> " alt="редактировать ">
                         </div>
                     </div>
-                    <p class="info__subtitle ">Исследователь океана</p>
+                    <p class="info__subtitle "></p>
                 </div>
                 <button class="add-button " type="button ">
                     <img class="add-button__plus " src="<%=require('./images/plus.svg')%> " alt="добавить ">
@@ -54,13 +42,62 @@
             <template class="place-template ">
                 <article class="place">
                     <img src="/ " class="place__illustration " alt="/ ">
-                    <img src="<%=require('./images/place__delete.svg')%>" alt="удалить " class="place__delete ">
+                    <button type="button" class="place__delete" disabled ></button>
                     <div class="place__box ">
                         <h2 class="place__title "></h2>
-                        <button class="place__heart " type="button "></button>
+                        <div class='place__heart-box'>
+                            <button class="place__heart " type="button "></button>
+                            <figcaption class="place__heart-signature"></figcaption>
+                        </div>
                     </div>
                 </article>
             </template>
+            <!-- footer -->
+            <footer class="footer ">
+                <p class="footer__author ">&copy; 2021 Mesto Russia</p>
+            </footer>
+            <!-- popup profile -->
+            <div class="popup invisible popup_type_profile">
+                <div class="popup__border">
+                    <button class="popup__exit" type="button">
+                    <img class="popup__exit-img" src="<%=require('./images/Close-Icon.svg')%>" alt="закрыть">
+                </button>
+                    <form class="popup__content popup__profile-form">
+                        <h2 class="popup__title">Редактировать профиль</h2>
+                        <input type="text" id="user-name" class="popup__text popup__user-name" name="name" placeholder="Имя" required minlength="2" maxlength="40">
+                        <p class="user-name-error text-error invisible"></p>
+                        <input type="text" id='user-info' class="popup__text popup__user-info" name="about" placeholder="О себе" required minlength="2" maxlength="200">
+                        <p class="user-info-error text-error invisible"></p>
+                        <button class="popup__button  popup__button_type_profile" type="submit " disabled id="btn-profile">Сохранить</button>
+                    </form>
+                </div>
+            </div>
+            <!-- popup confirmation -->
+            <div class="popup invisible  popup_type_confirmation ">
+                <div class="popup__border ">
+                    <button class="popup__exit popup__exit_confirmation " type="button ">
+                        <img class="popup__exit-img " src="<%=require('./images/Close-Icon.svg')%> " alt="закрыть ">
+                    </button>
+                    <form class="popup__content popup__confirmation-form " novalidate>
+                        <h2 class="popup__title ">Вы уверены?</h2>
+                        <button class="popup__button popup__button_type_confirmation popup__button_condition_active" type="submit" id="btn-confirmation">Да</button>
+                    </form>
+                </div>
+            </div>
+            <!-- popup setting avatar -->
+            <div class="popup invisible popup_type_avatar ">
+                <div class="popup__border ">
+                    <button class="popup__exit popup__exit_avatar " type="button ">
+                        <img class="popup__exit-img " src="<%=require('./images/Close-Icon.svg')%> " alt="закрыть ">
+                    </button>
+                    <form class="popup__content popup__avatar-form " novalidate>
+                        <h2 class="popup__title ">Обновить аватар</h2>
+                        <input type="text" id="place-link" class="popup__text popup__place-link " name="link" placeholder="Ссылка на картинку " required pattern="https://.*">
+                        <p class="place-link-error text-error invisible"></p>
+                        <button class="popup__button popup__button_type_place" type="submit" disabled id="btn-avatar">Сохранить</button>
+                    </form>
+                </div>
+            </div>
             <!--popup photo -->
             <div class="invisible popup popup_type_photo">
                 <figure class="popup__border">
@@ -81,17 +118,13 @@
                         <h2 class="popup__title ">Новое место</h2>
                         <input type="text" id="place-name" class="popup__text popup__place-name " name="name" placeholder="Название " required minlength="2" maxlength="30">
                         <p class="place-name-error text-error invisible"></p>
-                        <input type="text" id="place-link" class="popup__text popup__place-link " name="link" placeholder="Ссылка на картинку " required pattern="https://.*">
+                        <input type="text" id="place-link" class="popup__text popup__place-link " name="link" placeholder="Ссылка на картинку " required pattern="(https://.*|http://.*)">
                         <p class="place-link-error text-error invisible"></p>
-                        <button class="popup__button popup__button_type_place" type="submit" disabled id="btn-place">Создать</button>
+                        <button class="popup__button popup__button_type_place" type="submit" disabled id="btn-place">Сохранить</button>
                     </form>
                 </div>
             </div>
         </div>
-        <!-- footer -->
-        <footer class="footer ">
-            <p class="footer__author ">&copy; 2020 Mesto Russia</p>
-        </footer>
     </div>
 </body>
 

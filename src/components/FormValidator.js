@@ -51,9 +51,7 @@ class FormValidator {
         }
         this._showError(input.id, input.validationMessage);
     }
-    _cancelPageReloadWhenSubmitForm(e) {
-        e.preventDefault();
-    }
+
     _setEventListeners(formInputes, inputList, submitButton) {
         formInputes.forEach((input) => {
             input.addEventListener('input', (e) => {
@@ -61,10 +59,6 @@ class FormValidator {
                 this._toggleButtonState(inputList, submitButton)
             });
         });
-        this.forms.forEach((form) => {
-            form.addEventListener('submit', e => this._cancelPageReloadWhenSubmitForm(e))
-        })
-
     }
 
     _hasInvalidInput(inputList) {
