@@ -5,6 +5,7 @@ import { UserInfo } from '../components/UserInfo';
 import { Section } from '../components/Section';
 import { PopupWithImage } from '../components/PopupWithImage';
 import {
+    openEditProfilePopupBtn,
     cardsContainer,
     confirmationPopup,
     formValidationPopupAvatar,
@@ -20,11 +21,10 @@ import {
     photoPopup,
     formValidationPopupPlace,
     formValidationPopupProfile
-} from '../components/constants.js'
+} from '../utils/constants.js'
 import '../pages/index.css';
 import { Api } from '../components/Api.js'
-import { PopupConfirmation } from '../components/PopupConfirmation.js';
-import { openEditProfilePopupBtn } from '../utils/openEditProfilePopupBtn'
+import { PopupConfirmation } from '../components/PopupConfirmation';
 const userInfoInstance = new UserInfo('.info__title', '.info__subtitle', '.avatar-box__avatar');
 const validationInputesPopupPlace = new FormValidator(formValidationPopupPlace);
 const validationInputesPopupProfile = new FormValidator(formValidationPopupProfile);
@@ -38,17 +38,15 @@ const api = new Api({
     },
 });
 
-function createSection(items) {
-    const section = new Section({
-        items: items,
-        renderer: (data) => {
-            const card = addNewCard(data);
-            section.addItem(card.generateCard());
-        },
-        containerSelector: cardsContainer
-    });
-    return section
-}
+
+const section = new Section({
+    renderer: (data) => {
+        const card = addNewCard(data);
+        section.addItem(card.generateCard());
+    },
+    containerSelector: cardsContainer
+});
+
 const popupConfirmationForm = new PopupConfirmation({
     popup: confirmationPopup,
     submit: (data) => {
@@ -92,7 +90,6 @@ const popupPlaceForm = new PopupWithForm({
             .submitCard(data.name, data.link)
             .then((res) => {
                 const card = addNewCard(res)
-                const section = createSection(card)
                 section.addItem(card.generateCard());
             })
             .then(() => {
@@ -158,7 +155,7 @@ function addNewCard(data) {
         data: data,
         template: '.place',
         openPhoto: () => handleCardClick(data),
-        openPopupConfirmation: handleDeleteBtnClick,
+        openPopupConfirmation: () => handleDeleteBtnClick(data),
         handleLike: toggleLike,
         userId: userId,
     });
@@ -174,8 +171,7 @@ api.getUserInfo().then(res => {
 }).then(() => {
     api.getInitialCards().then((res) => {
         const cards = res.reverse()
-        const section = createSection(cards)
-        section.render()
+        section.render(cards)
     })
 }).catch((err) => console.error(err))
 

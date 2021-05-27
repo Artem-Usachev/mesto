@@ -8,9 +8,9 @@ export class PopupConfirmation extends Popup {
     }
     renderLoading(loading) {
         if (loading) {
-            this.submitButton.textContent = 'Сохранение...';
+            this.submitButton.textContent = 'Удаление...';
         } else {
-            this.submitButton.textContent = 'Сохранено!';
+            this.submitButton.textContent = 'Удалено!';
         }
     };
     setEventListeners() {
@@ -21,7 +21,6 @@ export class PopupConfirmation extends Popup {
         });
 
     }
-
     open(data) {
         super.open();
         this.data = data

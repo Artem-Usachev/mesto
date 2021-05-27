@@ -1,11 +1,10 @@
 export class Section {
-    constructor({ items, renderer, containerSelector }) {
-        this.items = items;
+    constructor({ renderer, containerSelector }) {
         this.renderer = renderer;
         this.containerElement = containerSelector;
     }
-    render() {
-        this.items.forEach((element) => this.renderer(element, '.place'));
+    render(items) {
+        items.forEach((element) => this.renderer(element));
     }
     addItem(element) {
         this.containerElement.prepend(element);

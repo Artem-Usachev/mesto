@@ -1,3 +1,4 @@
+export const openEditProfilePopupBtn = document.querySelector('.info__setting-box');
 export const popupProfile = document.querySelector('.popup_type_profile');
 export const inputUserName = popupProfile.querySelector('input[name="name"]');
 export const inputUserInfo = popupProfile.querySelector('input[name="about"]');
