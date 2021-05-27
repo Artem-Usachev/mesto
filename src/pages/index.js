@@ -60,7 +60,6 @@ const popupConfirmationForm = new PopupConfirmation({
             .catch((err) => console.error(err))
             .finally(() => popupConfirmationForm.renderLoading(false))
     },
-
 })
 const popupProfileForm = new PopupWithForm({
     popup: popupProfile,
@@ -93,6 +92,7 @@ const popupPlaceForm = new PopupWithForm({
                 section.addItem(card.generateCard());
             })
             .then(() => {
+
                 popupPlaceForm.close()
             })
             .catch((err) => console.error(err))
@@ -155,7 +155,7 @@ function addNewCard(data) {
         data: data,
         template: '.place',
         openPhoto: () => handleCardClick(data),
-        openPopupConfirmation: () => handleDeleteBtnClick(data),
+        openPopupConfirmation: handleDeleteBtnClick,
         handleLike: toggleLike,
         userId: userId,
     });

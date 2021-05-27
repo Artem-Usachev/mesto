@@ -22,13 +22,12 @@ class Card {
     }
 
     _setEventListeners() {
+
         const cardDeleteButton = this._card.querySelector('.place__delete');
         const cardIllustration = this._card.querySelector('.place__illustration');
         cardIllustration.addEventListener('click', this._openPhotoFunction);
         cardDeleteButton.addEventListener('click', () => this._openPopupConfirmation(this));
         this.cardHeart.addEventListener('click', this._clickLikes.bind(this))
-
-
     }
     _clickLikes() {
         if (this.cardHeart.classList.contains('place__heart_active')) {

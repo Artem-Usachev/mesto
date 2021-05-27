@@ -1,23 +1,16 @@
-import { Popup } from "./Popup";
-export class PopupConfirmation extends Popup {
+import { PopupWithForm } from "./PopupWithForm";
+export class PopupConfirmation extends PopupWithForm {
     constructor({ popup, submit }) {
-        super(popup);
-        this.submitForm = this.popup.querySelector('.popup__content')
-        this.submitButton = this.submitForm.querySelector('.popup__button')
-        this.submit = submit;
+        super({ popup, submit });
     }
-    renderLoading(loading) {
-        if (loading) {
-            this.submitButton.textContent = 'Удаление...';
-        } else {
-            this.submitButton.textContent = 'Удалено!';
-        }
-    };
+    _transferSubmit() {
+        this.submit(this.data);
+    }
     setEventListeners() {
         super.setEventListeners();
         this.submitForm.addEventListener("submit", (e) => {
             e.preventDefault();
-            this.submit(this.data);
+            () => this._transferSubmit()
         });
 
     }
